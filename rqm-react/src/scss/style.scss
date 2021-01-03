@@ -45,4 +45,46 @@ body {
       font-style: italic;
     }
   }
+
+  .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      background-color: $bg-color;
+      color: $primary-color;
+      border: none;
+      padding: 1em;
+      font-size: 1em;
+    }
+
+    button:active,
+    button:hover {
+      outline: none;
+      @include button-hover-colors($bg-color);
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5em;
+      color: $bg-color;
+      border: $bg-color 1px solid;
+      border-radius: 15px;
+      padding: 0.3em;
+      width: 2em;
+    }
+
+    a:hover {
+      @include button-hover-colors($bg-color);
+    }
+  }
 }

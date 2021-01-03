@@ -44,3 +44,47 @@ body {
   align-self: flex-end;
   font-style: italic;
 }
+
+#quote-box .buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#quote-box .buttons button {
+  background-color: purple;
+  color: #fff;
+  border: none;
+  padding: 1em;
+  font-size: 1em;
+}
+
+#quote-box .buttons button:active,
+#quote-box .buttons button:hover {
+  outline: none;
+  background-color: #4d004d;
+  color: #fff;
+}
+
+#quote-box .buttons button:active {
+  transform: scale(0.98);
+}
+
+#quote-box .buttons a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  color: purple;
+  border: purple 1px solid;
+  border-radius: 15px;
+  padding: 0.3em;
+  width: 2em;
+}
+
+#quote-box .buttons a:hover {
+  background-color: #4d004d;
+  color: #fff;
+}

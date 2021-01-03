@@ -1,2 +1,9 @@
 $bg-color: purple;
 $primary-color: #fff;
+
+// set colours for buttons on hover
+
+@mixin button-hover-colors($color) {
+  background-color: darken($color, 10%);
+  color: #fff;
+}

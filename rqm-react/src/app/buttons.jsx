@@ -13,7 +13,7 @@ class Buttons extends React.Component {
           href="https://twitter.com/intent/tweet?text=So%20inspiring%21&hashtags=randomquote"
           id="tweet-quote"
         >
-          Tweet
+          <i class="fab fa-twitter"></i>
         </a>
       </div>
     );
