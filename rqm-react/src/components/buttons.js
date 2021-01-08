@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function Buttons({ setQuote }) {
+function Buttons({ setQuote, setAuthor, fetchQuote }) {
   let handleClick = () => {
-    setQuote('hello');
+    setQuote(fetchQuote());
+    setAuthor('Ylva Turner');
   };
 
   return (
