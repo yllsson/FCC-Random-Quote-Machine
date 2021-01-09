@@ -1,9 +1,8 @@
 import React from 'react';
 
-function Buttons({ setQuote, setAuthor, fetchQuote }) {
+function Buttons({ fetchQuote }) {
   let handleClick = () => {
-    setQuote(fetchQuote());
-    setAuthor('Ylva Turner');
+    fetchQuote();
   };
 
   return (
@@ -15,7 +14,7 @@ function Buttons({ setQuote, setAuthor, fetchQuote }) {
         href='https://twitter.com/intent/tweet?text=So%20inspiring%21&hashtags=randomquote'
         id='tweet-quote'
       >
-        <i class='fab fa-twitter'></i>
+        <i className='fab fa-twitter'></i>
       </a>
     </div>
   );

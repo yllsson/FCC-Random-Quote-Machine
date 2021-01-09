@@ -1,28 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import InnerQuoteBox from './quote';
 import Buttons from './buttons';
 
 function App() {
-  const [quote, setQuote] = useState([]);
-  const [author, setAuthor] = useState([]);
+  const [quote, setQuote] = useState('quote');
+  const [author, setAuthor] = useState('author');
+  const [hasError, setError] = useState(false);
 
-  let fetchQuote = () => {
-    fetch('https://type.fit/api/quotes')
-      .then((response) => response.json())
+  async function fetchQuote() {
+    const res = await fetch('https://type.fit/api/quotes');
+    res
+      .json()
       .then((data) => {
-        setQuote(data);
-        setAuthor(data);
-      });
-  };
+        console.log(data);
+        console.log(data[1].text);
+        setQuote(data[1].text);
+        setAuthor(data[1].author);
+      })
+      .catch((err) => setError(err));
+  }
+
+  // useEffect(() => {
+  //   fetchQuote();
+  // });
 
   return (
     <main id='quote-box'>
       <InnerQuoteBox quote={quote} author={author} />
-      <Buttons
-        setQuote={setQuote}
-        setAuthor={setAuthor}
-        fetchQuote={fetchQuote}
-      />
+      <Buttons fetchQuote={fetchQuote} />
     </main>
   );
 }

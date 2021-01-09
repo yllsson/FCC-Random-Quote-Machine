@@ -1,22 +1,22 @@
 import React from 'react';
 
+// const Quote = ({ text, author }) => {
+//   return (
+//     <span>
+//       <strong>{text}</strong> &nbsp; <span>{author}</span>
+//     </span>
+//   );
+// };
+
 function InnerQuoteBox({ quote, author }) {
   return (
     <article className='innerQBox'>
-      {quote.map((item) => {
-        return (
-          <h2 className='quote' id='text'>
-            {item.text}
-          </h2>
-        );
-      })}
-      {quote.map((item) => {
-        return (
-          <p className='author' id='author'>
-            {item.author}
-          </p>
-        );
-      })}
+      <h2 className='quote' id='text'>
+        {JSON.stringify(quote)}
+      </h2>
+      <p className='author' id='author'>
+        {JSON.stringify(author)}
+      </p>
     </article>
   );
 }
