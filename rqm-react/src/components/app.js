@@ -6,19 +6,24 @@ function App() {
   const [allQuotes, setAllQuotes] = useState(null);
   const [quote, setQuote] = useState(null);
   const [author, setAuthor] = useState(null);
+  const [randomIdx, setRandomIdx] = useState(0);
+
+  const newRandomIdx = (arr) => {
+    setRandomIdx(Math.floor(Math.random() * arr.length));
+  };
 
   async function fetchQuote() {
     const res = await fetch('https://type.fit/api/quotes');
     res.json().then((data) => {
       setAllQuotes(data);
-      let randomIdx = Math.floor(Math.random() * data.length);
+      newRandomIdx(data);
       setQuote(data[randomIdx].text);
       setAuthor(data[randomIdx].author);
     });
   }
 
   let updateQuoteBox = () => {
-    let randomIdx = Math.floor(Math.random() * allQuotes.length);
+    newRandomIdx(allQuotes);
     setQuote(allQuotes[randomIdx].text);
     setAuthor(allQuotes[randomIdx].author);
   };
