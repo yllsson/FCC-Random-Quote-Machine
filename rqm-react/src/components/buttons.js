@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Buttons({ fetchQuote }) {
+function Buttons({ updateQuoteBox }) {
   let handleClick = () => {
-    fetchQuote();
+    updateQuoteBox();
   };
 
   return (
