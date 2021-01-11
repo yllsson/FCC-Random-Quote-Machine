@@ -3,15 +3,17 @@ import InnerQuoteBox from './quote';
 import Buttons from './buttons';
 
 function App() {
-  const [allQuotes, setAllQuotes] = useState([{ text: 'hellu', author: 'me' }]);
-  const [quote, setQuote] = useState();
-  const [author, setAuthor] = useState();
+  const [allQuotes, setAllQuotes] = useState(null);
+  const [quote, setQuote] = useState(null);
+  const [author, setAuthor] = useState(null);
 
   async function fetchQuote() {
     const res = await fetch('https://type.fit/api/quotes');
     res.json().then((data) => {
       setAllQuotes(data);
-      console.log(allQuotes);
+      let randomIdx = Math.floor(Math.random() * data.length);
+      setQuote(data[randomIdx].text);
+      setAuthor(data[randomIdx].author);
     });
   }
 
@@ -25,13 +27,9 @@ function App() {
     fetchQuote();
   }, []);
 
-  // useEffect(() => {
-  //   updateQuoteBox();
-  // }, []);
-
   return (
     <main id='quote-box'>
-      <InnerQuoteBox quote={quote} author={author} />
+      {allQuotes && <InnerQuoteBox quote={quote} author={author} />}
       <Buttons updateQuoteBox={updateQuoteBox} />
     </main>
   );
