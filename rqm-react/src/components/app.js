@@ -6,10 +6,27 @@ function App() {
   const [allQuotes, setAllQuotes] = useState(null);
   const [quote, setQuote] = useState(null);
   const [author, setAuthor] = useState(null);
-  const [randomIdx, setRandomIdx] = useState(0);
+  const [randomIdx, setRandomIdx] = useState(Math.floor(Math.random() * 1000));
+  const [theme, setTheme] = useState({
+    color: ['purple', 'blue', 'red', 'green'],
+  });
 
   const newRandomIdx = (arr) => {
     setRandomIdx(Math.floor(Math.random() * arr.length));
+  };
+
+  const changeThemeColor = () => {
+    const elements = document.querySelectorAll('.themeElement');
+    newRandomIdx(theme.color);
+    elements.forEach((element) => {
+      if (element.localName === 'a') {
+        element.style.color = theme.color[randomIdx];
+        element.style.border = `${theme.color[randomIdx]} 1px solid`;
+      } else {
+        element.style.backgroundColor = theme.color[randomIdx];
+      }
+    });
+    document.body.style.backgroundColor = theme.color[randomIdx];
   };
 
   async function fetchQuote() {
@@ -26,6 +43,8 @@ function App() {
     newRandomIdx(allQuotes);
     setQuote(allQuotes[randomIdx].text);
     setAuthor(allQuotes[randomIdx].author);
+    changeThemeColor();
+    console.log(theme);
   };
 
   useEffect(() => {
