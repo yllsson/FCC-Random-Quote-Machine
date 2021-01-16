@@ -1,14 +1,21 @@
 // want to
-// 1. add more colours to theme.color array
 // 2. ensure the theme doesn't change to the same colour twice in a row
 // 3. fix the outline on the new quote button
 // 4. amend colour of twitter button
 // 5. make author field say "Unknown" when data.author is "null"
 // 6. refactor newRandomIdx/newThemeIdx functions to be one function updating theme or quotes depending on which arr it's checking
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import InnerQuoteBox from './quote';
 import Buttons from './buttons';
+
+const usePrevious = (value) => {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+};
 
 function App() {
   const [allQuotes, setAllQuotes] = useState(null);
@@ -16,6 +23,7 @@ function App() {
   const [author, setAuthor] = useState(null);
   const [randomIdx, setRandomIdx] = useState(Math.floor(Math.random() * 1000));
   const [themeIdx, setThemeIdx] = useState(Math.floor(Math.random() * 25));
+  const prevThemeIdx = usePrevious(themeIdx);
   const [theme, setTheme] = useState({
     color: [
       '#EF6F6C',
@@ -57,6 +65,19 @@ function App() {
   const changeThemeColor = () => {
     const elements = document.querySelectorAll('.themeElement');
     newThemeIdx(theme.color);
+
+    if (prevThemeIdx === themeIdx) {
+      console.log(prevThemeIdx);
+      console.log(themeIdx);
+      console.log('the colour indexes match!');
+      setThemeIdx(themeIdx - 1);
+      console.log(`new index is ${themeIdx}`);
+    } else {
+      console.log(prevThemeIdx);
+      console.log(themeIdx);
+      console.log('the colour indexes do not match!');
+    }
+
     elements.forEach((element) => {
       if (element.localName === 'a') {
         element.style.color = theme.color[themeIdx];
@@ -66,6 +87,7 @@ function App() {
       }
     });
     document.body.style.backgroundColor = theme.color[themeIdx];
+    //
   };
 
   async function fetchQuote() {
