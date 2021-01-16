@@ -1,3 +1,11 @@
+// want to
+// 1. add more colours to theme.color array
+// 2. ensure the theme doesn't change to the same colour twice in a row
+// 3. fix the outline on the new quote button
+// 4. amend colour of twitter button
+// 5. make author field say "Unknown" when data.author is "null"
+// 6. refactor newRandomIdx/newThemeIdx functions to be one function updating theme or quotes depending on which arr it's checking
+
 import React, { useEffect, useState } from 'react';
 import InnerQuoteBox from './quote';
 import Buttons from './buttons';
@@ -7,26 +15,57 @@ function App() {
   const [quote, setQuote] = useState(null);
   const [author, setAuthor] = useState(null);
   const [randomIdx, setRandomIdx] = useState(Math.floor(Math.random() * 1000));
+  const [themeIdx, setThemeIdx] = useState(Math.floor(Math.random() * 25));
   const [theme, setTheme] = useState({
-    color: ['purple', 'blue', 'red', 'green'],
+    color: [
+      '#EF6F6C',
+      '#465775',
+      '#56E39F',
+      '#59C9A5',
+      '#5B6C5D',
+      '#E3170A',
+      '#F7B32B',
+      '#2D1E2F',
+      '#62929E',
+      '#C6C5B9',
+      '#CE7B91',
+      '#031926',
+      '#90BE6D',
+      '#EA9010',
+      '#63264A',
+      '#7161EF',
+      '#B79CED',
+      '#49111C',
+      '#BA5A31',
+      '#04A777',
+      '#30011E',
+      '#B68F40',
+      '#086375',
+      '#3C1642',
+      '#454ADE'
+    ]
   });
 
   const newRandomIdx = (arr) => {
     setRandomIdx(Math.floor(Math.random() * arr.length));
   };
 
+  const newThemeIdx = (arr) => {
+    setThemeIdx(Math.floor(Math.random() * arr.length));
+  };
+
   const changeThemeColor = () => {
     const elements = document.querySelectorAll('.themeElement');
-    newRandomIdx(theme.color);
+    newThemeIdx(theme.color);
     elements.forEach((element) => {
       if (element.localName === 'a') {
-        element.style.color = theme.color[randomIdx];
-        element.style.border = `${theme.color[randomIdx]} 1px solid`;
+        element.style.color = theme.color[themeIdx];
+        element.style.border = `${theme.color[themeIdx]} 1px solid`;
       } else {
-        element.style.backgroundColor = theme.color[randomIdx];
+        element.style.backgroundColor = theme.color[themeIdx];
       }
     });
-    document.body.style.backgroundColor = theme.color[randomIdx];
+    document.body.style.backgroundColor = theme.color[themeIdx];
   };
 
   async function fetchQuote() {
@@ -44,11 +83,11 @@ function App() {
     setQuote(allQuotes[randomIdx].text);
     setAuthor(allQuotes[randomIdx].author);
     changeThemeColor();
-    console.log(theme);
   };
 
   useEffect(() => {
     fetchQuote();
+    changeThemeColor();
   }, []);
 
   return (
