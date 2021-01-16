@@ -70,8 +70,6 @@ function App() {
       console.log(prevThemeIdx);
       console.log(themeIdx);
       console.log('the colour indexes match!');
-      setThemeIdx(themeIdx - 1);
-      console.log(`new index is ${themeIdx}`);
     } else {
       console.log(prevThemeIdx);
       console.log(themeIdx);
