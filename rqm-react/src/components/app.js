@@ -1,7 +1,3 @@
-// want to
-// 5. make author field say "Unknown" when data.author is "null"
-// 6. refactor newRandomIdx/newThemeIdx functions to be one function updating theme or quotes depending on which arr it's checking
-
 import React, { useEffect, useState, useRef } from 'react';
 import InnerQuoteBox from './quote';
 import Buttons from './buttons';
@@ -106,7 +102,7 @@ function App() {
   return (
     <main id='quote-box'>
       {allQuotes && <InnerQuoteBox quote={quote} author={author} />}
-      <Buttons updateQuoteBox={updateQuoteBox} />
+      <Buttons quote={quote} updateQuoteBox={updateQuoteBox} />
     </main>
   );
 }

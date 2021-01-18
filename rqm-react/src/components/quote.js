@@ -4,10 +4,10 @@ function InnerQuoteBox({ quote, author }) {
   return (
     <article className='innerQBox'>
       <h2 className='quote' id='text'>
-        {quote}
+        {`"${quote}"`}
       </h2>
       <p className='author' id='author'>
-        {author}
+        {author ? author : 'Unknown'}
       </p>
     </article>
   );
