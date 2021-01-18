@@ -91,8 +91,6 @@ body {
 #quote-box .buttons button:hover,
 #quote-box .buttons button:focus {
   outline: none;
-  background-color: #4d004d;
-  color: #fff;
 }
 
 #quote-box .buttons button:active {
@@ -117,9 +115,4 @@ body {
   border-radius: 3px;
   padding: 0.3em;
   width: 2em;
-}
-
-#quote-box .buttons a:hover {
-  background-color: #4d004d;
-  color: #fff;
 }

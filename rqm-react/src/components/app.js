@@ -1,5 +1,4 @@
 // want to
-// 4. amend colour of twitter button
 // 5. make author field say "Unknown" when data.author is "null"
 // 6. refactor newRandomIdx/newThemeIdx functions to be one function updating theme or quotes depending on which arr it's checking
 
@@ -22,7 +21,7 @@ function App() {
   const [randomIdx, setRandomIdx] = useState(Math.floor(Math.random() * 1000));
   const [themeIdx, setThemeIdx] = useState(Math.floor(Math.random() * 25));
   const prevThemeIdx = usePrevious(themeIdx);
-  const [theme, setTheme] = useState({
+  const [theme] = useState({
     color: [
       '#EF6F6C',
       '#465775',

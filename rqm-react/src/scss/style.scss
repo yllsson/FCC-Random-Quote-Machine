@@ -65,7 +65,7 @@ body {
     button:hover,
     button:focus {
       outline: none;
-      @include button-hover-colors($bg-color);
+      // @include button-hover-colors($bg-color);
     }
 
     button:active {
@@ -83,10 +83,6 @@ body {
       border-radius: 3px;
       padding: 0.3em;
       width: 2em;
-    }
-
-    a:hover {
-      @include button-hover-colors($bg-color);
     }
   }
 }
