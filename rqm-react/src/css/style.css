@@ -75,12 +75,14 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-top: 1em;
 }
 
 #quote-box .buttons button {
   background-color: purple;
   color: #fff;
   border: none;
+  border-radius: 3px;
   padding: 1em;
   font-size: 1em;
 }
@@ -100,7 +102,8 @@ body {
 
 #quote-box .buttons a {
   text-decoration: none;
-  color: #333;
+  background-color: purple;
+  color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -111,9 +114,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   font-size: 1.5em;
-  color: purple;
-  border: purple 1px solid;
-  border-radius: 15px;
+  border-radius: 3px;
   padding: 0.3em;
   width: 2em;
 }

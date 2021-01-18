@@ -66,28 +66,17 @@ function App() {
 
     if (prevThemeIdx === themeIdx) {
       let index = themeIdx - 1;
-
       if (index < 0) {
         index = theme.color.length - 1;
       }
 
       elements.forEach((element) => {
-        if (element.localName === 'a') {
-          element.style.color = theme.color[index];
-          element.style.border = `${theme.color[index]} 1px solid`;
-        } else {
-          element.style.backgroundColor = theme.color[index];
-        }
+        element.style.backgroundColor = theme.color[index];
       });
       document.body.style.backgroundColor = theme.color[index];
     } else {
       elements.forEach((element) => {
-        if (element.localName === 'a') {
-          element.style.color = theme.color[themeIdx];
-          element.style.border = `${theme.color[themeIdx]} 1px solid`;
-        } else {
-          element.style.backgroundColor = theme.color[themeIdx];
-        }
+        element.style.backgroundColor = theme.color[themeIdx];
       });
       document.body.style.backgroundColor = theme.color[themeIdx];
     }
