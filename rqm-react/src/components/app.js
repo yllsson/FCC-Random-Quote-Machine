@@ -67,11 +67,7 @@ function App() {
     newRandomIdx(theme.color);
 
     if (prevThemeIdx === themeIdx) {
-      console.log(prevThemeIdx);
-      console.log(themeIdx);
-      console.log('the colour indexes match!');
       let index = themeIdx - 1;
-      console.log(index);
 
       if (index < 0) {
         index = theme.color.length - 1;
@@ -87,10 +83,6 @@ function App() {
       });
       document.body.style.backgroundColor = theme.color[index];
     } else {
-      console.log(prevThemeIdx);
-      console.log(themeIdx);
-      console.log('the colour indexes do not match!');
-
       elements.forEach((element) => {
         if (element.localName === 'a') {
           element.style.color = theme.color[themeIdx];
