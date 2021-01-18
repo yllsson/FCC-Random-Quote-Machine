@@ -1,3 +1,6 @@
+// need to do
+// 1. ensure error catching in fetch function works
+
 import React, { useEffect, useState, useRef } from 'react';
 import InnerQuoteBox from './quote';
 import Buttons from './buttons';
@@ -77,14 +80,23 @@ function App() {
     }
   };
 
-  async function fetchQuote() {
-    const res = await fetch('https://type.fit/api/quotes');
-    res.json().then((data) => {
-      setAllQuotes(data);
-      newRandomIdx(data);
-      setQuote(data[randomIdx].text);
-      setAuthor(data[randomIdx].author);
-    });
+  function fetchQuote() {
+    fetch('https://type.fit/api/quotes')
+      .then((res) => {
+        if (!res.ok) {
+          throw Error('Unable to fetch the data');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setAllQuotes(data);
+        newRandomIdx(data);
+        setQuote(data[randomIdx].text);
+        setAuthor(data[randomIdx].author);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   }
 
   const updateQuoteBox = () => {
