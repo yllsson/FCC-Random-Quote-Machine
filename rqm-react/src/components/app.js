@@ -1,6 +1,4 @@
 // want to
-// 2. ensure the theme doesn't change to the same colour twice in a row
-// 3. fix the outline on the new quote button
 // 4. amend colour of twitter button
 // 5. make author field say "Unknown" when data.author is "null"
 // 6. refactor newRandomIdx/newThemeIdx functions to be one function updating theme or quotes depending on which arr it's checking

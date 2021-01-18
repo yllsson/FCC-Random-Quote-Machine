@@ -86,7 +86,8 @@ body {
 }
 
 #quote-box .buttons button:active,
-#quote-box .buttons button:hover {
+#quote-box .buttons button:hover,
+#quote-box .buttons button:focus {
   outline: none;
   background-color: #4d004d;
   color: #fff;

@@ -59,7 +59,8 @@ body {
     }
 
     button:active,
-    button:hover {
+    button:hover,
+    button:focus {
       outline: none;
       @include button-hover-colors($bg-color);
     }
