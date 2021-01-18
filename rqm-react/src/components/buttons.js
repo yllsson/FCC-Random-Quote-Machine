@@ -1,13 +1,9 @@
 import React from 'react';
 
 function Buttons({ updateQuoteBox }) {
-  let handleClick = () => {
-    updateQuoteBox();
-  };
-
   return (
     <div className='buttons'>
-      <button className='themeElement' id='new-quote' onClick={handleClick}>
+      <button className='themeElement' id='new-quote' onClick={updateQuoteBox}>
         New quote
       </button>
       <a

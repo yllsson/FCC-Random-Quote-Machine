@@ -50,42 +50,57 @@ function App() {
       '#B68F40',
       '#086375',
       '#3C1642',
-      '#454ADE'
-    ]
+      '#454ADE',
+    ],
   });
 
   const newRandomIdx = (arr) => {
-    setRandomIdx(Math.floor(Math.random() * arr.length));
-  };
-
-  const newThemeIdx = (arr) => {
-    setThemeIdx(Math.floor(Math.random() * arr.length));
+    if (arr === theme.color) {
+      setThemeIdx(Math.floor(Math.random() * arr.length));
+    } else {
+      setRandomIdx(Math.floor(Math.random() * arr.length));
+    }
   };
 
   const changeThemeColor = () => {
     const elements = document.querySelectorAll('.themeElement');
-    newThemeIdx(theme.color);
+    newRandomIdx(theme.color);
 
     if (prevThemeIdx === themeIdx) {
       console.log(prevThemeIdx);
       console.log(themeIdx);
       console.log('the colour indexes match!');
+      let index = themeIdx - 1;
+      console.log(index);
+
+      if (index < 0) {
+        index = theme.color.length - 1;
+      }
+
+      elements.forEach((element) => {
+        if (element.localName === 'a') {
+          element.style.color = theme.color[index];
+          element.style.border = `${theme.color[index]} 1px solid`;
+        } else {
+          element.style.backgroundColor = theme.color[index];
+        }
+      });
+      document.body.style.backgroundColor = theme.color[index];
     } else {
       console.log(prevThemeIdx);
       console.log(themeIdx);
       console.log('the colour indexes do not match!');
-    }
 
-    elements.forEach((element) => {
-      if (element.localName === 'a') {
-        element.style.color = theme.color[themeIdx];
-        element.style.border = `${theme.color[themeIdx]} 1px solid`;
-      } else {
-        element.style.backgroundColor = theme.color[themeIdx];
-      }
-    });
-    document.body.style.backgroundColor = theme.color[themeIdx];
-    //
+      elements.forEach((element) => {
+        if (element.localName === 'a') {
+          element.style.color = theme.color[themeIdx];
+          element.style.border = `${theme.color[themeIdx]} 1px solid`;
+        } else {
+          element.style.backgroundColor = theme.color[themeIdx];
+        }
+      });
+      document.body.style.backgroundColor = theme.color[themeIdx];
+    }
   };
 
   async function fetchQuote() {
@@ -98,7 +113,7 @@ function App() {
     });
   }
 
-  let updateQuoteBox = () => {
+  const updateQuoteBox = () => {
     newRandomIdx(allQuotes);
     setQuote(allQuotes[randomIdx].text);
     setAuthor(allQuotes[randomIdx].author);
