@@ -1,8 +1,8 @@
 {
-  "name": "rqm-react",
+  "name": "fcc-random-quote-machine",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yllsson.github.io/FCC-Random-Quote-Machine/rqm-react",
+  "homepage": "https://yllsson.github.io/FCC-Random-Quote-Machine",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
