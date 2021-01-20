@@ -11,6 +11,7 @@ function Buttons({ quote, updateQuoteBox }) {
         href={`https://twitter.com/intent/tweet?text=So%20inspiring%21${` "${quote}"`}&hashtags=randomQuoteMachine%2C100DaysOfCode`}
         id='tweet-quote'
         target='_blank'
+        rel='noreferrer'
       >
         <i className='fab fa-twitter'></i>
       </a>

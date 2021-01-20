@@ -1,6 +1,3 @@
-// need to do
-// 1. ensure error catching in fetch function works
-
 import React, { useEffect, useState, useRef } from 'react';
 import InnerQuoteBox from './quote';
 import Buttons from './buttons';
@@ -14,12 +11,10 @@ const usePrevious = (value) => {
 };
 
 function App() {
+  // state
   const [allQuotes, setAllQuotes] = useState(null);
   const [quote, setQuote] = useState(null);
   const [author, setAuthor] = useState(null);
-  const [randomIdx, setRandomIdx] = useState(Math.floor(Math.random() * 1000));
-  const [themeIdx, setThemeIdx] = useState(Math.floor(Math.random() * 25));
-  const prevThemeIdx = usePrevious(themeIdx);
   const [theme] = useState({
     color: [
       '#EF6F6C',
@@ -46,10 +41,16 @@ function App() {
       '#B68F40',
       '#086375',
       '#3C1642',
-      '#454ADE',
-    ],
+      '#454ADE'
+    ]
   });
+  const [isPending, setIsPending] = useState(true);
+  const [error, setError] = useState(null);
+  const [randomIdx, setRandomIdx] = useState(Math.floor(Math.random() * 1000));
+  const [themeIdx, setThemeIdx] = useState(Math.floor(Math.random() * 25));
+  const prevThemeIdx = usePrevious(themeIdx);
 
+  // get new random index
   const newRandomIdx = (arr) => {
     if (arr === theme.color) {
       setThemeIdx(Math.floor(Math.random() * arr.length));
@@ -58,6 +59,30 @@ function App() {
     }
   };
 
+  // fetch the quotes
+  function fetchQuote() {
+    fetch('https://type.fit/api/quotes')
+      .then((res) => {
+        if (!res.ok) {
+          throw Error('Unable to fetch the data');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setAllQuotes(data);
+        newRandomIdx(data);
+        setQuote(data[randomIdx].text);
+        setAuthor(data[randomIdx].author);
+        setIsPending(false);
+        setError(null);
+      })
+      .catch((error) => {
+        setIsPending(false);
+        setError(error.message);
+      });
+  }
+
+  // change the theme colour
   const changeThemeColor = () => {
     const elements = document.querySelectorAll('.themeElement');
     newRandomIdx(theme.color);
@@ -80,25 +105,13 @@ function App() {
     }
   };
 
-  function fetchQuote() {
-    fetch('https://type.fit/api/quotes')
-      .then((res) => {
-        if (!res.ok) {
-          throw Error('Unable to fetch the data');
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setAllQuotes(data);
-        newRandomIdx(data);
-        setQuote(data[randomIdx].text);
-        setAuthor(data[randomIdx].author);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }
+  // functions to use on first render
+  useEffect(() => {
+    fetchQuote();
+    changeThemeColor();
+  }, []);
 
+  // subsequent updates of the quote box
   const updateQuoteBox = () => {
     newRandomIdx(allQuotes);
     setQuote(allQuotes[randomIdx].text);
@@ -106,13 +119,10 @@ function App() {
     changeThemeColor();
   };
 
-  useEffect(() => {
-    fetchQuote();
-    changeThemeColor();
-  }, []);
-
   return (
     <main id='quote-box'>
+      {error && <h2 className='error'>{`Error: ${error}`}</h2>}
+      {isPending && <h2>Grabbing Quote...</h2>}
       {allQuotes && <InnerQuoteBox quote={quote} author={author} />}
       <Buttons quote={quote} updateQuoteBox={updateQuoteBox} />
     </main>
