@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/FCC-Random-Quote-Machine/rqm-react/static/css/main.cc3e402f.chunk.css",
-    "main.js": "/FCC-Random-Quote-Machine/rqm-react/static/js/main.95ca6e2c.chunk.js",
-    "main.js.map": "/FCC-Random-Quote-Machine/rqm-react/static/js/main.95ca6e2c.chunk.js.map",
+    "main.js": "/FCC-Random-Quote-Machine/rqm-react/static/js/main.50890c35.chunk.js",
+    "main.js.map": "/FCC-Random-Quote-Machine/rqm-react/static/js/main.50890c35.chunk.js.map",
     "runtime-main.js": "/FCC-Random-Quote-Machine/rqm-react/static/js/runtime-main.576ff4bb.js",
     "runtime-main.js.map": "/FCC-Random-Quote-Machine/rqm-react/static/js/runtime-main.576ff4bb.js.map",
     "static/js/2.ff16c13e.chunk.js": "/FCC-Random-Quote-Machine/rqm-react/static/js/2.ff16c13e.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.576ff4bb.js",
     "static/js/2.ff16c13e.chunk.js",
     "static/css/main.cc3e402f.chunk.css",
-    "static/js/main.95ca6e2c.chunk.js"
+    "static/js/main.50890c35.chunk.js"
   ]
 }
