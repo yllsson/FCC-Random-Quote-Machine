@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
-import InnerQuoteBox from './quote';
-import Buttons from './buttons';
+import InnerQuoteBox from './InnerQuoteBox';
+import Buttons from './Buttons';
 
+// get previous state
 const usePrevious = (value) => {
   const ref = useRef();
   useEffect(() => {

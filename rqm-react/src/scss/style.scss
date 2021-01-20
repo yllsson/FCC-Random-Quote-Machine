@@ -1,5 +1,7 @@
+// imports
 @import 'colors';
 
+// general styling
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,6 +17,7 @@ body {
   height: 100vh;
 }
 
+// main container - the "outer" quote box
 #quote-box {
   background-color: $primary-color;
   padding: 3em;
@@ -30,6 +33,7 @@ body {
     color: #ff0000;
   }
 
+  // the InnerQuoteBox component
   .innerQBox {
     display: flex;
     flex-direction: column;
@@ -50,6 +54,7 @@ body {
     }
   }
 
+  // the Buttons component
   .buttons {
     width: 100%;
     display: flex;
@@ -70,7 +75,6 @@ body {
     button:hover,
     button:focus {
       outline: none;
-      // @include button-hover-colors($bg-color);
     }
 
     button:active {
