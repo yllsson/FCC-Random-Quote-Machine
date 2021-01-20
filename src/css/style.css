@@ -37,7 +37,7 @@ body {
 
 #quote-box .innerQBox h2,
 #quote-box .innerQBox p {
-  margin: 1rem;
+  margin: 1em;
 }
 
 #quote-box .innerQBox h2 {
@@ -53,7 +53,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-top: 1em;
+  margin: 1em 0;
 }
 
 #quote-box .buttons button {
@@ -86,4 +86,22 @@ body {
   border-radius: 3px;
   padding: 0.3em;
   width: 2em;
+}
+
+@media screen and (max-width: 768px) {
+  #quote-box {
+    max-width: 80vw;
+    padding: 2em;
+    font-size: 0.9em;
+  }
+  #quote-box .buttons {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #quote-box {
+    padding: 1em;
+    font-size: 0.7em;
+  }
 }

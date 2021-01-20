@@ -41,7 +41,7 @@ body {
 
     h2,
     p {
-      margin: 1rem;
+      margin: 1em;
     }
 
     h2 {
@@ -59,7 +59,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 1em;
+    margin: 1em 0;
 
     button {
       background-color: $bg-color;
@@ -93,5 +93,26 @@ body {
       padding: 0.3em;
       width: 2em;
     }
+  }
+}
+
+// mobile responsivity
+
+@media screen and (max-width: 768px) {
+  #quote-box {
+    max-width: 80vw;
+    padding: 2em;
+    font-size: 0.9em;
+
+    .buttons {
+      justify-content: space-around;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #quote-box {
+    padding: 1em;
+    font-size: 0.7em;
   }
 }
