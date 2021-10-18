@@ -3,7 +3,12 @@ import React from 'react';
 function Buttons({ quote, updateQuoteBox }) {
   return (
     <div className='buttons'>
-      <button className='themeElement' id='new-quote' onClick={updateQuoteBox}>
+      <button
+        type='button'
+        className='themeElement'
+        id='new-quote'
+        onClick={updateQuoteBox}
+      >
         New quote
       </button>
       <a

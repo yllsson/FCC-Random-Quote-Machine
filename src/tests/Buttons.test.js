@@ -4,7 +4,7 @@ import Buttons from '../components/Buttons';
 
 test('should call updateQuoteBox when clicked', () => {
   const updateQuoteBox = jest.fn();
-  render(<Buttons onClick={updateQuoteBox} />);
-  fireEvent.click(screen.getByText(/New quote/i));
+  const buttons = render(<Buttons updateQuoteBox={updateQuoteBox} />);
+  fireEvent.click(buttons.getByText(/New quote/i));
   expect(updateQuoteBox).toHaveBeenCalled();
 });
