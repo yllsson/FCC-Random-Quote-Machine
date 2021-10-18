@@ -7,7 +7,10 @@ const props = {
   author: 'Ylva Turner'
 };
 
-test('should display quote on render', () => {
-  const quoteBoxComp = render(<InnerQuoteBox {...props} />);
-  expect(quoteBoxComp.getByRole('header').innerText).toBe(props.quote);
+describe('InnerQuoteBox component', () => {
+  it('should display quote on render', () => {
+    const quoteBoxComp = render(<InnerQuoteBox {...props} />);
+    const header = quoteBoxComp.getByRole('heading');
+    expect(header.textContent).toBe(`"${props.quote}"`);
+  });
 });
