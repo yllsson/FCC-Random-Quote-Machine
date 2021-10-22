@@ -19,4 +19,10 @@ describe('InnerQuoteBox component', () => {
     const paragraph = quoteBoxComp.getByText(/Ylva/i);
     expect(paragraph.textContent).toBe(props.author);
   });
+
+  it('should display "Unknown" if no author found', () => {
+    const quoteBoxComp = render(<InnerQuoteBox />);
+    const paragraph = quoteBoxComp.getByText(/unkn/i);
+    expect(paragraph.textContent).toBe('Unknown');
+  });
 });
