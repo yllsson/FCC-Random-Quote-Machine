@@ -13,4 +13,10 @@ describe('InnerQuoteBox component', () => {
     const header = quoteBoxComp.getByRole('heading');
     expect(header.textContent).toBe(`"${props.quote}"`);
   });
+
+  it('should display author on render', () => {
+    const quoteBoxComp = render(<InnerQuoteBox {...props} />);
+    const paragraph = quoteBoxComp.getByText(/Ylva/i);
+    expect(paragraph.textContent).toBe(props.author);
+  });
 });
