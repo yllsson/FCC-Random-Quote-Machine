@@ -103,12 +103,6 @@ function App() {
     }
   };
 
-  // functions to use on first render
-  useEffect(() => {
-    fetchQuote();
-    changeThemeColor();
-  }, []);
-
   // subsequent updates of the quote box
   const updateQuoteBox = () => {
     newRandomIdx(allQuotes);
@@ -116,6 +110,12 @@ function App() {
     setAuthor(allQuotes[randomIdx].author);
     changeThemeColor();
   };
+
+  // functions to use on first render
+  useEffect(() => {
+    fetchQuote();
+    changeThemeColor();
+  }, []);
 
   return (
     <main id='quote-box'>
