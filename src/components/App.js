@@ -61,27 +61,24 @@ function App() {
   };
 
   // fetch the quotes
-  function fetchQuote() {
-    fetch('https://type.fit/api/quotes')
-      .then((res) => {
-        if (!res.ok) {
-          throw Error('Unable to fetch the data');
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setAllQuotes(data);
-        newRandomIdx(data);
-        setQuote(data[randomIdx].text);
-        setAuthor(data[randomIdx].author);
-        setIsPending(false);
-        setError(null);
-      })
-      .catch((error) => {
-        setIsPending(false);
-        setError(error.message);
-      });
-  }
+  const fetchQuote = async () => {
+    let res = await fetch('https://type.fit/api/quotes');
+    try {
+      if (!res.ok) {
+        throw Error('Unable to fetch the data');
+      }
+      let data = await res.json();
+      setAllQuotes(data);
+      newRandomIdx(data);
+      setQuote(data[randomIdx].text);
+      setAuthor(data[randomIdx].author);
+      setIsPending(false);
+      setError(null);
+    } catch (error) {
+      setIsPending(false);
+      setError(error.message);
+    }
+  };
 
   // change the theme colour
   const changeThemeColor = () => {
