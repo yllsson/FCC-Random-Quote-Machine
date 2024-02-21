@@ -46,7 +46,7 @@ function App() {
     ]
   });
   const [isPending, setIsPending] = useState(true);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [randomIdx, setRandomIdx] = useState(Math.floor(Math.random() * 1000));
   const [themeIdx, setThemeIdx] = useState(Math.floor(Math.random() * 25));
   const prevThemeIdx = usePrevious(themeIdx);
@@ -73,10 +73,10 @@ function App() {
       setQuote(data[randomIdx].text);
       setAuthor(data[randomIdx].author);
       setIsPending(false);
-      setError(null);
+      // setError(null);
     } catch (error) {
       setIsPending(false);
-      setError(error.message);
+      // setError(error.message);
     }
   };
 
@@ -115,11 +115,12 @@ function App() {
   useEffect(() => {
     fetchQuote();
     changeThemeColor();
+    updateQuoteBox();
   }, []);
 
   return (
     <main id='quote-box'>
-      {error && <h2 className='error'>{`Error: ${error}`}</h2>}
+      {/* {error && <h2 className='error'>{`Error: ${error}`}</h2>} */}
       {isPending && <h2>Grabbing Quote...</h2>}
       {allQuotes && <InnerQuoteBox quote={quote} author={author} />}
       <Buttons quote={quote} updateQuoteBox={updateQuoteBox} />
